@@ -3,9 +3,10 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { sidebarItems } from "./sidebarItems";
 import Link from "next/link";
 import { AlignJustify } from "lucide-react";
+import Header from "../Header/Header";
 const MobileNav = (): ReactNode => {
   return (
-    <div className="md:hidden">
+    <div className="flex items-center justify-between">
       <Sheet>
         <SheetTrigger asChild>
           <AlignJustify />
@@ -87,6 +88,7 @@ const MobileNav = (): ReactNode => {
           </div>
         </SheetContent>
       </Sheet>
+      <Header />
     </div>
   );
 };

@@ -18,8 +18,11 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     if (!passwordMatch) {
       return NextResponse.json({ message: "Invalid email or password" });
     }
-
-    const access_token = await generateAccessToken(user.email);
+    const payload = {
+      userId: user._id,
+      email: user.email,
+    };
+    const access_token = await generateAccessToken(payload);
     console.log(access_token, "accesstoken");
 
     await User.findByIdAndUpdate(user._id, { tokens: { access_token } });

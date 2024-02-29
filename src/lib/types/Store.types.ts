@@ -2,8 +2,15 @@ import { Types } from "mongoose";
 
 export interface StoreI {
   name: string;
-  products: Types.ObjectId[];
+  owner: string;
+  description: string;
+  location: string;
+  category: string;
+  logo?: string;
+  website?: string;
+  isActive?: Boolean;
+  products?: Types.ObjectId[];
   createdBy: Types.ObjectId;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
