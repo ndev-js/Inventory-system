@@ -14,13 +14,13 @@ export const config = {
 };
 export const POST = requireAuth(async (req: NextApiRequest) => {
   try {
-    const {} = await new Promise<FormidableFields>((resolve, reject) => {
-      form.parse(req, (err, fields, files) => {
-        if (err) return reject(err);
-        return resolve({ fields, files });
-      });
-    });
-    return NextResponse.json({ message: "All rights to you " });
+    // const {} = await new Promise<FormidableFields>((resolve, reject) => {
+    //   form.parse(req, (err, fields, files) => {
+    //     if (err) return reject(err);
+    //     return resolve({ fields, files });
+    //   });
+    // });
+    // return NextResponse.json({ message: "All rights to you " });
   } catch (error) {
     console.log(error);
     return null;
