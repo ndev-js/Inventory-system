@@ -1,11 +1,14 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { sidebarItems } from "./sidebarItems";
 import Link from "next/link";
 import MobileNav from "./MobileNav";
+import Header from "../Header/Header";
 const Sidebar = () => {
   return (
     <>
-      <div className="h-screen p-3 space-y-2 w-60 bg-white dark:text-gray-100 border-r hidden sm:block">
+      {/* <div className="hidden md:flex"> */}
+      {/* <div className="h-screen hidden md:block "> */}
+      <div className="h-screen fixed  p-3 space-y-2 w-60 bg-white dark:text-gray-100 border-r hidden md:block">
         <div className="flex items-center p-2 space-x-4">
           <img
             src="https://source.unsplash.com/100x100/?portrait"
@@ -79,14 +82,13 @@ const Sidebar = () => {
           </ul>
         </div>
       </div>
+      {/* </div> */}
+      {/* </div> */}
+
       {/* <p className="block sm:hidden">Open nav</p> */}
-      <div className="flex  border-b p-2 justify-between items-center">
-        <MobileNav />
-        <div className=" w-1/2 text-center font-semibold ">
-          <p className="text-lg">Inventory System</p>
-        </div>
-        <div></div>
-      </div>
+      {/* <div className="flex border-b p-2 justify-between items-center md:hidden">
+        <Header />
+      </div> */}
     </>
   );
 };

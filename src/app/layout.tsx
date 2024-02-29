@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/shared/sidebar/Sidebar";
 import Header from "@/components/shared/Header/Header";
+import MobileNav from "@/components/shared/sidebar/MobileNav";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,9 +20,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Sidebar />
-        <Header />
-        {children}
+        <div className=" md:hidden  border-b">
+          <MobileNav />
+        </div>
+        <div className="hidden md:block">
+          <Sidebar />
+        </div>
+        <div className="flex-1">
+          <div className="hidden md:block">
+            <Header />
+          </div>
+          {children} {/* Children are rendered here */}
+        </div>
       </body>
     </html>
   );
