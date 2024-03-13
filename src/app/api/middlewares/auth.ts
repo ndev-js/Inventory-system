@@ -42,16 +42,14 @@
 type AuthError = {
   errorType: "TokenExpiredError" | "JsonWebTokenError";
 };
-
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 import jwt, { TokenExpiredError, JsonWebTokenError } from "jsonwebtoken";
-import { NextRequest, NextResponse } from "next/server";
 import { verifyAccessToken } from "@/lib/jwt";
-import { headers } from "next/headers";
+import { NextResponse } from "next/server";
 
 export function requireAuth(handler: NextApiHandler) {
   return async (req: NextApiRequest, res: NextApiResponse) => {
-    const authorizationHeader = headers().get("authorization");
+    const authorizationHeader = req.headers.authorization;
     if (!authorizationHeader) {
       return NextResponse.json({ error: "Unauthorized" });
     }
@@ -67,7 +65,7 @@ export function requireAuth(handler: NextApiHandler) {
         return NextResponse.json({ error: "Unauthorized: Token expired" });
       }
 
-      return await handler(req, res);
+      return handler(req, res);
     } catch (error) {
       console.log(error, "errors");
       if (error instanceof TokenExpiredError) {
